@@ -13,10 +13,10 @@ function App() {
   const passwordGenerator = useCallback(() => {
     let pass = "";
     let strData = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm"
-    if(numAllow) strData + "0123456789"
-    if (charAllow) strData + "!@#$%^&*=-_`~+:;<.>?/|,"
+    if(numAllow) strData += "0123456789"
+    if (charAllow) strData += "!@#$%^&*=-_`~+:;<.>?/|,"
     for (let index = 0; index < len; index++) {
-      let position = Math.floor(Math.random() * strData.length + 1)
+      let position = Math.floor(Math.random() * strData.length)
       pass += strData.charAt(position)
       
     }
