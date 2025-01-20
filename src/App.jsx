@@ -25,27 +25,34 @@ function App() {
   },[len,numAllow,charAllow,setPassword])
   return (
     <>
-     <div className='w-full max-w-screen-md mx-auto shadow-md rounded-lg px-4 my-8 py-7 bg-gray-800 text-orange-500'>
-      <h1>Password Generator App</h1>
-      <div className='flex shadow rounded-lg overflow-hidden mb-4'>
+    <div className=" bg-gray-900 py-8">
+     <div className='w-full font-mono max-w-screen-md mx-auto shadow-md rounded-lg px-4 my-8 py-7 bg-gray-800 text-orange-500'>
+      <h1 className='mb-2'>Password Generator App</h1>
+      <hr />
+      <div className='flex shadow rounded-lg overflow-hidden m-4'>
         <input type="text" value={pass} className='outline-none w-full py-1 px-3' placeholder='password' readOnly/>
-        <button className='ml-2' onClick={passwordGenerator}>Generate</button>
+        <button className='-m-2' >Copy</button>
+       
       </div>
-      <div className='flex text-sm gap-x-2 '>
-        <div className='flex items-center gap-x-1'>
-          <input type="range" min={6} max={100} value={len} className='cursor-pointer' onChange={(e) => {setLen(e.target.value)}}  />
+      <div className='flex text-sm gap-x-2 m-4 '>
+        <div className='flex items-center gap-x-3 w-2/3'>
+          <input type="range" min={6} max={100} value={len} className='cursor-pointer w-4/6' onChange={(e) => {setLen(e.target.value)}}  />
           <label>Length: {len}</label>
         </div>
         <div className='flex text-sm gap-x-2 '>
           <input type="checkbox" defaultChecked={numAllow}
           id='numbInput'
           onChange={() => {setNumAllow((prev)=> !prev)}}/>
-          <label htmlFor="numbInput">Numbers</label>
+          <label className="flex items-center" htmlFor="numbInput">Numbers</label> 
           <input type="checkbox" defaultChecked={charAllow}
           id='charInput'
           onChange={() => {setCharAllow((prev)=> !prev)}}/>
-          <label htmlFor="charInput">Characters</label>
+          <label className="flex items-center" htmlFor="charInput">Characters</label>
+        </div >
+        <div className='flex text-sm gap-x-2'>
+        <button className='ml-4' onClick={passwordGenerator}>Generate</button>
         </div>
+      </div>
       </div>
       </div>
     </>
