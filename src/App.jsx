@@ -10,6 +10,7 @@ function App() {
   const [pass,setPassword] = useState("")
 
   const passwordGenerator = useCallback(() => {
+    document.getElementById("selected").style.color = 'orange'
     let pass = "";
     let strData = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm"
     if(numAllow) strData += "0123456789"
@@ -27,6 +28,7 @@ function App() {
     
     
 window.navigator.clipboard.writeText(pass)
+document.getElementById("selected").style.color = "green"
   }
   useEffect(()=>{passwordGenerator()},[len,numAllow,charAllow,passwordGenerator])
   return (
@@ -36,7 +38,7 @@ window.navigator.clipboard.writeText(pass)
       <h1 className='mb-2'>Password Generator App</h1>
       <hr />
       <div className='flex shadow rounded-lg overflow-hidden m-4'>
-        <input type="text" value={pass} className='outline-none w-full py-1 px-3' placeholder='password' readOnly/>
+        <input type="text" value={pass} className='outline-none w-full py-1 px-3' placeholder='password' readOnly id='selected'/>
         <button className='-m-2 ' onClick={copyFunc} >Copy</button>
        
       </div>
