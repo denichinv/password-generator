@@ -9,7 +9,6 @@ function App() {
   const [charAllow, setCharAllow] = useState(false)
   const [pass,setPassword] = useState("")
 
-
   const passwordGenerator = useCallback(() => {
     let pass = "";
     let strData = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm"
@@ -23,6 +22,12 @@ function App() {
     setPassword(pass)
     
   },[len,numAllow,charAllow,setPassword])
+
+  const copyFunc = () => {
+    
+    
+window.navigator.clipboard.writeText(pass)
+  }
   useEffect(()=>{passwordGenerator()},[len,numAllow,charAllow,passwordGenerator])
   return (
     <>
@@ -32,7 +37,7 @@ function App() {
       <hr />
       <div className='flex shadow rounded-lg overflow-hidden m-4'>
         <input type="text" value={pass} className='outline-none w-full py-1 px-3' placeholder='password' readOnly/>
-        <button className='-m-2 ' >Copy</button>
+        <button className='-m-2 ' onClick={copyFunc} >Copy</button>
        
       </div>
       <div className='flex text-sm m-4 '>
