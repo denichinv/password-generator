@@ -1,5 +1,5 @@
 
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
     setPassword(pass)
     
   },[len,numAllow,charAllow,setPassword])
+  useEffect(()=>{passwordGenerator()},[len,numAllow,charAllow,passwordGenerator])
   return (
     <>
     <div className=" bg-gray-900 py-8">
@@ -31,15 +32,15 @@ function App() {
       <hr />
       <div className='flex shadow rounded-lg overflow-hidden m-4'>
         <input type="text" value={pass} className='outline-none w-full py-1 px-3' placeholder='password' readOnly/>
-        <button className='-m-2' >Copy</button>
+        <button className='-m-2 ' >Copy</button>
        
       </div>
-      <div className='flex text-sm gap-x-2 m-4 '>
-        <div className='flex items-center gap-x-3 w-2/3'>
-          <input type="range" min={6} max={100} value={len} className='cursor-pointer w-4/6' onChange={(e) => {setLen(e.target.value)}}  />
-          <label>Length: {len}</label>
+      <div className='flex text-sm m-4 '>
+        <div className='flex items-center gap-x-2 w-9/12'>
+          <input type="range" min={6} max={100} value={len} className='cursor-pointer w-5/6' onChange={(e) => {setLen(e.target.value)}}  />
+          <label className='mr-2'>Length:{len}</label>
         </div>
-        <div className='flex text-sm gap-x-2 '>
+        <div className='flex text-sm gap-x-2'>
           <input type="checkbox" defaultChecked={numAllow}
           id='numbInput'
           onChange={() => {setNumAllow((prev)=> !prev)}}/>
@@ -49,9 +50,7 @@ function App() {
           onChange={() => {setCharAllow((prev)=> !prev)}}/>
           <label className="flex items-center" htmlFor="charInput">Characters</label>
         </div >
-        <div className='flex text-sm gap-x-2'>
-        <button className='ml-4' onClick={passwordGenerator}>Generate</button>
-        </div>
+     
       </div>
       </div>
       </div>
