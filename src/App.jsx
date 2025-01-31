@@ -32,36 +32,74 @@ document.getElementById("selected").style.color = "green"
   }
   useEffect(()=>{passwordGenerator()},[len,numAllow,charAllow,passwordGenerator])
   return (
-    <>
-    <div className=" bg-gray-900 py-8">
-     <div className='w-full font-mono max-w-screen-md mx-auto shadow-md rounded-lg px-4 my-8 py-7 bg-gray-800 text-orange-500'>
-      <h1 className='mb-2'>Password Generator App</h1>
-      <hr />
-      <div className='flex shadow rounded-lg overflow-hidden m-4'>
-        <input type="text" value={pass} className='outline-none w-full py-1 px-3' placeholder='password' readOnly id='selected'/>
-        <button className='-m-2 ' onClick={copyFunc} >Copy</button>
-       
+    
+    <div className="min-h-screen flex items-center justify-center bg-gray-900 p-6">
+    <div className="w-full max-w-screen-md font-mono mx-auto shadow-lg rounded-lg px-8 py-10 bg-gray-800 text-orange-500 min-h-[350px]">
+      <h1 className="text-4xl font-bold text-center mb-4">Password Generator App</h1>
+      <hr className="border-orange-500 mb-6" />
+  
+      {/* Password Display */}
+      <div className="flex items-center shadow-md rounded-lg overflow-hidden bg-gray-700">
+        <input
+          type="text"
+          value={pass}
+          className="outline-none w-full py-3 px-4 bg-gray-700 text-2xl"
+          placeholder="Generated password"
+          readOnly
+          id="selected"
+        />
+        <button
+          className="bg-orange-500 hover:bg-orange-600 text-white text-2xl px-5 py-3"
+          onClick={copyFunc}
+        >
+          Copy
+        </button>
       </div>
-      <div className='flex text-sm m-4 '>
-        <div className='flex items-center gap-x-2 w-9/12'>
-          <input type="range" min={6} max={100} value={len} className='cursor-pointer w-5/6' onChange={(e) => {setLen(e.target.value)}}  />
-          <label className='mr-2'>Length:{len}</label>
+  
+      {/* Controls */}
+      <div className="flex flex-col gap-8 mt-8">
+        {/* Password Length Slider */}
+        <div className="flex-initial">
+          <input
+            type="range"
+            min={6}
+            max={100}
+            value={len}
+            className="cursor-pointer w-full accent-orange-500"
+            onChange={(e) => setLen(e.target.value)}
+          />
+          <span className="text-2xl">Length: {len}</span>
         </div>
-        <div className='flex text-sm gap-x-2'>
-          <input type="checkbox" defaultChecked={numAllow}
-          id='numbInput'
-          onChange={() => {setNumAllow((prev)=> !prev)}}/>
-          <label className="flex items-center" htmlFor="numbInput">Numbers</label> 
-          <input type="checkbox" defaultChecked={charAllow}
-          id='charInput'
-          onChange={() => {setCharAllow((prev)=> !prev)}}/>
-          <label className="flex items-center" htmlFor="charInput">Characters</label>
-        </div >
-     
+  
+        {/* Checkbox Options */}
+        <div className="flex justify-center gap-20 text-2xl items-center">
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="checkbox"
+              defaultChecked={numAllow}
+              id="numbInput"
+              onChange={() => setNumAllow((prev) => !prev)}
+              className="accent-orange-500 size-5"
+            />
+            <span>Numbers</span>
+          </label>
+  
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="checkbox"
+              defaultChecked={charAllow}
+              id="charInput"
+              onChange={() => setCharAllow((prev) => !prev)}
+              className="accent-orange-500 size-5"
+            />
+            <span>Characters</span>
+          </label>
+        </div>
       </div>
-      </div>
-      </div>
-    </>
+    </div>
+  </div>
+  
+    
   )
 }
 
