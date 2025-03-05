@@ -34,7 +34,7 @@ document.getElementById("selected").style.color = "green"
   return (
     
     <div className="min-h-screen flex items-center justify-center bg-gray-900 p-6">
-    <div className="w-full max-w-screen-md font-mono mx-auto shadow-lg rounded-lg px-8 py-10 bg-gray-800 text-orange-500 min-h-[350px]">
+    <div className="w-full max-w-(--breakpoint-md) font-mono mx-auto shadow-lg rounded-lg px-8 py-10 bg-gray-800 text-orange-500 min-h-[350px]">
       <h1 className="text-4xl font-bold text-center mb-4">Password Generator App</h1>
       <hr className="border-orange-500 mb-6" />
   
@@ -43,13 +43,13 @@ document.getElementById("selected").style.color = "green"
         <input
           type="text"
           value={pass}
-          className="outline-none w-full py-3 px-4 bg-gray-700 text-2xl"
+          className="outline-hidden w-full py-3 px-4 bg-gray-700 text-2xl"
           placeholder="Generated password"
           readOnly
           id="selected"
         />
         <button
-          className="bg-orange-500 hover:bg-orange-600 text-white text-2xl px-5 py-3"
+          className=" hover:bg-orange-600 text-orange text-3xl px-5 py-3"
           onClick={copyFunc}
         >
           Copy
